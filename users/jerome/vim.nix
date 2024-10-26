@@ -5,6 +5,11 @@ self: super:
 {
   # My vim config
   customVim = with self; {
+    fzf = vimUtils.buildVimPlugin {
+      name = "fzf";
+      src = inputs.fzf;
+    };
+
     vim-fzf = vimUtils.buildVimPlugin {
       name = "vim-fzf";
       src = inputs.vim-fzf;
@@ -32,7 +37,7 @@ self: super:
 
     dracula = vimUtils.buildVimPlugin {
       name = "dracula";
-      src = inputs.vim-dracula;
+      src = inputs.dracula;
     };
 
     AfterColors = vimUtils.buildVimPlugin {
@@ -48,6 +53,11 @@ self: super:
     vim-nord = vimUtils.buildVimPlugin {
       name = "vim-nord";
       src = inputs.vim-nord;
+    };
+
+    nvim-plenary = vimUtils.buildVimPlugin {
+      name = "nvim-plenary";
+      src = inputs.nvim-plenary;
     };
 
     nvim-harpoon = vimUtils.buildVimPlugin {

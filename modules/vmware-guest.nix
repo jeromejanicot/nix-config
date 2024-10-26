@@ -37,13 +37,17 @@ in
 
     environment.systemPackages = [ open-vm-tools ];
 
-    systemd.services.vmware =
-      { description = "VMWare Guest Service";
-        wantedBy = [ "multi-user.target" ];
-        after = [ "display-manager.service" ];
-        unitConfig.ConditionVirtualization = "vmware";
-        serviceConfig.ExecStart = "${open-vm-tools}/bin/vmtoolsd";
+    systemd.services.vmware = {
+      description = "VMWare Guest Service";
+      wantedBy = [ "multi-user.target" ];
+      unitConfig = {
+        After = [ "display-manager.service" ];
+        ConditionVirtualization = "vmware";
       };
+      serviceConfig = {
+        ExecStart = "${open-vm-tools}/bin/vmtoolsd";
+      };
+    };
 
     # Mount the vmblock for drag-and-drop and copy-and-paste.
     systemd.mounts = [

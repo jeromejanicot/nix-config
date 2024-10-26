@@ -120,7 +120,6 @@ in {
     cachix
     gnumake
     killall
-    rxvt_unicode
     xclip
 
     # For hypervisors that support auto-resizing, this script forces it.

@@ -1,0 +1,22 @@
+#QOL
+alias ..="cd .."
+
+#VMWARE
+alias mbp="cd /host/jerome_mbp"
+
+#Dev
+alias vin="virtualenv .venv && source .venv/bin/activate"
+alias vout="deactivate && rm -rf .venv"
+
+function dev()
+
+    nix develop .#"$1" -c $SHELL
+
+# FZF
+source <(fzf --zsh)
+
+# Set GPG TTY for pinentry
+if [[ -t 0 ]]; then
+    export GPG_TTY=$(tty)
+fi
+
