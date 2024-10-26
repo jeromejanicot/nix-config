@@ -319,13 +319,13 @@ in
   services.gpg-agent = {
     enable = isLinux;
 
-    # cache the keys forever so we don't get asked for a password
-    defaultCacheTtl = 31536000;
-    maxCacheTtl = 31536000;
-
     extraConfig = ''
       pinentry-program /etc/profiles/per-user/jerome/bin/pinentry
     '';
+
+    # cache the keys forever so we don't get asked for a password
+    defaultCacheTtl = 31536000;
+    maxCacheTtl = 31536000;
   };
 
   xresources.extraConfig = builtins.readFile ./Xresources;
